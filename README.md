@@ -8,11 +8,13 @@
 
 ---
 
-![CoverImg](https://i.gifer.com/N8fM.gif)
+![CoverImg](images/N8fM.gif)
 
 ---
 
 ### **_Description_**
+
+Pet-tracker is an application that allows you to keep track of the overall health/well being of your pet(s).
 
 #####
 
@@ -21,11 +23,12 @@
 ### **_Technologies_**
 
 - HTML, Javascript, Python
+- React.js / Vue.js
 - PostgreSQL
 - Node.js
 - Django
-- Heroku
-- Atlas
+- Netlify
+- Firebase
 
 ---
 
@@ -49,7 +52,7 @@
 
 ##### **Component Hierarchy Diagram**
 
-![Diagram]()
+![Diagram](images/comphierdia.png)
 
 ##### **ERD**
 
