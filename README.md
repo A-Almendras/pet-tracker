@@ -56,7 +56,7 @@ Pet-tracker is an application that allows you to keep track of the overall healt
 
 ##### **ERD**
 
-![ERD](images/erd.png)
+![ERD](images/ERD.png)
 
 ---
 
