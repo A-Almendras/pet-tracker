@@ -3,6 +3,7 @@ import React from 'react'
 const LoginForm = () => {
   return (
     <div>
+      {/* Each input needs value and onInput */}
       <div>LoginForm</div>
       <form action="">
         <input type="text" name="username" id="" placeholder="Username" />
