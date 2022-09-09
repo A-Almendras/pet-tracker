@@ -20,6 +20,7 @@ const RegisterForm = () => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value })
   }
 
+  // Submits the user registration form
   const handleSubmit = async (e) => {
     e.preventDefault()
     await RegisterUser({
@@ -66,7 +67,7 @@ const RegisterForm = () => {
         />
         <input
           onChange={handleChange}
-          type="text"
+          type="email"
           name="email"
           id=""
           placeholder="Email"
@@ -84,7 +85,7 @@ const RegisterForm = () => {
         />
         <input
           onChange={handleChange}
-          type="text"
+          type="password"
           name="password"
           id=""
           placeholder="Password"
@@ -93,7 +94,7 @@ const RegisterForm = () => {
         />
         <input
           onChange={handleChange}
-          type="text"
+          type="password"
           name="confirmPassword"
           id=""
           placeholder="Confirm Password"
