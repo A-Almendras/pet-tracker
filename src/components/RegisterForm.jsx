@@ -45,7 +45,7 @@ const RegisterForm = () => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <h3>Join Today</h3>
+        <h3>Join Today!</h3>
         <input
           onChange={handleChange}
           type="text"
@@ -109,6 +109,8 @@ const RegisterForm = () => {
         >
           Register
         </button>
+        <p>Already a member?</p>
+        <a href="/login">Log in</a>
       </form>
     </div>
   )
