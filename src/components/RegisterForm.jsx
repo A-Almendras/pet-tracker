@@ -1,9 +1,26 @@
+import { TextField, Paper, Grid, Card, Typography } from '@mui/material'
+// import { makeStyles } from '@mui/styles'
 import React from 'react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { RegisterUser } from '../services/Auth'
 
+// const useStyles = makeStyles({
+//   field: {
+//     marginTop: 10,
+//     marginBottom: 10
+//   }
+// })
+
 const RegisterForm = () => {
+  const paperStyle = {
+    margin: '10vh auto',
+    // height: '50vh',
+    width: '20rem'
+  }
+
+  // const fieldStyle = useStyles()
+
   let navigate = useNavigate()
 
   const [formValues, setFormValues] = useState({
@@ -44,76 +61,128 @@ const RegisterForm = () => {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <h3>Join Today!</h3>
-        <input
-          onChange={handleChange}
-          type="text"
-          name="first_name"
-          id=""
-          placeholder="First Name"
-          value={formValues.first_name}
-          required
-        />
-        <input
-          onChange={handleChange}
-          type="text"
-          name="last_name"
-          id=""
-          placeholder="Last Name"
-          value={formValues.last_name}
-          required
-        />
-        <input
-          onChange={handleChange}
-          type="email"
-          name="email"
-          id=""
-          placeholder="Email"
-          value={formValues.email}
-          required
-        />
-        <input
-          onChange={handleChange}
-          type="text"
-          name="username"
-          id=""
-          placeholder="Username"
-          value={formValues.username}
-          required
-        />
-        <input
-          onChange={handleChange}
-          type="password"
-          name="password"
-          id=""
-          placeholder="Password"
-          value={formValues.password}
-          required
-        />
-        <input
-          onChange={handleChange}
-          type="password"
-          name="confirmPassword"
-          id=""
-          placeholder="Confirm Password"
-          value={formValues.confirmPassword}
-          required
-        />
-        <button
-        // disabled={
-        //   !formValues.username ||
-        //   (!formValues.password &&
-        //     formValues.confirmPassword === formValues.password)
-        // }
-        >
-          Register
-        </button>
-        <p>Already a member?</p>
-        <a href="/login">Log in</a>
-      </form>
-    </div>
+    // <div>
+    <Paper style={paperStyle}>
+      <Grid>
+        <Typography>
+          {/* <Card> */}
+          <form className="form" onSubmit={handleSubmit}>
+            <Grid
+              container
+              direction="column"
+              justifyContent="center"
+              alignItems="center"
+              // spacing={5}
+              // p={2}
+            >
+              <h3>Join Today!</h3>
+              <Grid>
+                <TextField
+                  onChange={handleChange}
+                  type="text"
+                  name="first_name"
+                  placeholder="First Name"
+                  value={formValues.first_name}
+                  id="outlined-basic"
+                  label="First Name"
+                  variant="outlined"
+                  size="small"
+                  // className={fieldStyle.field}
+                  // fullWidth
+                  required
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  onChange={handleChange}
+                  type="text"
+                  name="last_name"
+                  placeholder="Last Name"
+                  value={formValues.last_name}
+                  id="outlined-basic"
+                  label="Last Name"
+                  variant="outlined"
+                  size="small"
+                  // fullWidth
+                  required
+                />
+              </Grid>
+              <TextField
+                onChange={handleChange}
+                type="email"
+                name="email"
+                placeholder="Email"
+                value={formValues.email}
+                id="outlined-basic"
+                label="Email"
+                variant="outlined"
+                size="small"
+                // fullWidth
+                required
+              />
+              <TextField
+                onChange={handleChange}
+                type="text"
+                name="username"
+                placeholder="Username"
+                value={formValues.username}
+                id="outlined-basic"
+                label="Username"
+                variant="outlined"
+                size="small"
+                // margin="small"
+                // fullWidth
+                required
+              />
+              <TextField
+                onChange={handleChange}
+                type="password"
+                name="password"
+                placeholder="Password"
+                value={formValues.password}
+                id="outlined-basic"
+                label="Password"
+                variant="outlined"
+                size="small"
+                // margin="normal"
+                // fullWidth
+                required
+              />
+              <TextField
+                onChange={handleChange}
+                type="password"
+                name="confirmPassword"
+                placeholder="Confirm Password"
+                value={formValues.confirmPassword}
+                id="outlined-basic"
+                label="Confirm Password"
+                variant="outlined"
+                size="small"
+                // margin="normal"
+                // fullWidth
+                required
+              />
+              <Grid item p={2}>
+                <button
+                // disabled={
+                //   !formValues.username ||
+                //   (!formValues.password &&
+                //     formValues.confirmPassword === formValues.password)
+                // }
+                >
+                  Register
+                </button>
+              </Grid>
+              <p>
+                Already a member? <a href="/login">Log in</a>
+              </p>
+            </Grid>
+          </form>
+          {/* </Card> */}
+        </Typography>
+      </Grid>
+    </Paper>
+    // </div>
   )
 }
 
