@@ -5,24 +5,23 @@ import AuthUserContext from '../context/AuthUserContext'
 
 const Nav = () => {
   let { user, logout } = useContext(AuthUserContext)
-  // console.log(user.data.username)
+  console.log(user.username)
   const items = [
     {
       title: 'Profile',
-      path: `/user/`
+      path: `/user/${user.username}`
     },
     {
       title: 'Pets',
       path: '/pets'
+    },
+    {
+      title: 'Logout',
+      path: '/'
     }
-    // {
-    //   title: 'Logout',
-    //   path: '/'
-    // }
   ]
   return (
     <div className="navbar">
-      Welcome to the SideNavBar
       {items.map((item, index) => (
         <li key={index}>
           <NavLink
