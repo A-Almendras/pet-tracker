@@ -22,16 +22,15 @@ const LoginForm = () => {
     e.preventDefault()
     const payload = await LogInUser(formValues)
     // Resets the form to blank once API req completes successfully
-    setFormValues({ username: '', password: '' })
     setUser(payload)
+    setFormValues({ username: '', password: '' })
     console.log(payload)
     toggleAuthenticated(true)
-    console.log(user)
 
-    navigate('/user')
-    // navigate('/pets')
+    // navigate('/user')
+    navigate('/pets')
   }
-  // console.log(user)
+  console.log(user)
 
   return (
     <Grid>

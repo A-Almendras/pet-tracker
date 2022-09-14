@@ -8,10 +8,10 @@ export const LogInUser = async (data) => {
     const res = await Client.post('/token/', data)
     localStorage.setItem('token', res.data.access) // stores the user's auth access token with a key of token
     localStorage.setItem('refresh token', res.data.refresh)
-    console.log('data:', res.data)
-    console.log(res)
+    // console.log('data:', res.data)
+    // console.log(res)
     const decoded = jwt_decode(res.data.access)
-    console.log(decoded)
+    // console.log(decoded)
     // setAuthTokens(res.data.access)
     return res, decoded // returns user object
   } catch (error) {

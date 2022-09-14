@@ -10,10 +10,10 @@ const Client = Axios.create({ baseURL: BASE_URL })
 Client.interceptors.request.use(
   (config) => {
     let token = localStorage.getItem('token')
-    console.log(token)
+    // console.log(token)
     if (token) {
       config.headers['authorization'] = `Bearer ${token}`
-      console.log(config)
+      // console.log(config)
     }
     return config
   },
