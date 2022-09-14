@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import AuthUserContext from './AuthUserContext'
+import { GetPets } from '../services/UserReq'
 // import { LogInUser } from '../services/Auth'
 // import { useNavigate } from 'react-router-dom'
 
@@ -9,8 +10,18 @@ const AuthUserProvider = ({ children }) => {
   const [user, setUser] = useState(null) // Store info about the user
   const [authenticated, toggleAuthenticated] = useState(false) // To toggle the UI
   const [authTokens, setAuthTokens] = useState(null) // To get the authentication tokens
-
+  const [pets, setPets] = useState([]) // Store info about users pet
   let navigate = useNavigate()
+
+  const renderUserPets = async (userPets) => {
+    const data = await GetPets(userPets)
+    console.log(data)
+    if (data.length > 0) {
+      setPets(data)
+    } else {
+      setPets(null)
+    }
+  }
 
   const logout = () => {
     setUser(null)
@@ -22,9 +33,11 @@ const AuthUserProvider = ({ children }) => {
   let contextData = {
     user: user,
     authenticated: authenticated,
+    pets: pets,
     setUser: setUser,
     toggleAuthenticated: toggleAuthenticated,
     setAuthTokens: setAuthTokens,
+    renderUserPets: renderUserPets,
     logout: logout
   }
 

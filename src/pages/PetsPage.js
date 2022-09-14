@@ -12,6 +12,16 @@ const PetsPage = () => {
     setUser(data)
   }
 
+  // const renderUserPets = async (userPets) => {
+  //   const data = await GetPets(userPets)
+  //   console.log(data)
+  //   if (data.length > 0) {
+  //     setPets(data)
+  //   } else {
+  //     setPets(null)
+  //   }
+  // }
+
   const petDash = () => {}
 
   useEffect(() => {
