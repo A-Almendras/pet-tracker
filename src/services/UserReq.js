@@ -12,9 +12,9 @@ export const GetUserInfo = async (userId) => {
 }
 
 //
-export const GetPets = async (userPets) => {
+export const GetPets = async () => {
   try {
-    const res = await Client.get(userPets)
+    const res = await Client.get('pets/')
     console.log(res.data)
     return res.data
   } catch (error) {

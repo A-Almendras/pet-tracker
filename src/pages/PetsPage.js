@@ -5,7 +5,10 @@ import { GetUserInfo, GetPets } from '../services/UserReq'
 import { useState } from 'react'
 
 const PetsPage = () => {
-  let { user, setUser, pets, renderUserPets } = useContext(AuthUserContext)
+  let { user, setUser, authenticated, pets, renderUserPets } =
+    useContext(AuthUserContext)
+  console.log({ user })
+  console.log({ authenticated })
 
   const handleUserInfo = async (userId) => {
     const data = await GetUserInfo(userId)
@@ -26,23 +29,22 @@ const PetsPage = () => {
 
   useEffect(() => {
     handleUserInfo(user.user_id)
-  }, [])
+    renderUserPets()
+  }, [user])
 
-  useEffect(() => {
-    renderUserPets(user.pets)
-  }, [pets])
-
-  console.log(user)
+  // console.log(user)
   console.log({ pets })
 
   return (
     <div>
       <h2>Choose a pet:</h2>
-      {user.pets}
+      {/* {user.pets} */}
       {/* {pets.name} */}
-      <a href={user.pets}>Pets</a>
+      {/* <a href={user.pets}>Pets</a> */}
       {pets?.map((pet, index) => (
-        <button key={index}>{pet.name}</button>
+        <button key={index} onClick={petDash}>
+          {pet.name}
+        </button>
       ))}
       <button onClick={petDash}>+</button>
     </div>

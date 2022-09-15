@@ -13,10 +13,10 @@ const AuthUserProvider = ({ children }) => {
   const [pets, setPets] = useState([]) // Store info about users pet
   let navigate = useNavigate()
 
-  const renderUserPets = async (userPets) => {
-    const data = await GetPets(userPets)
+  const renderUserPets = async () => {
+    const data = await GetPets()
     console.log(data)
-    if (data.length > 0) {
+    if (user && authenticated) {
       setPets(data)
     } else {
       setPets(null)
