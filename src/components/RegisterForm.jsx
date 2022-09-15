@@ -2,7 +2,7 @@ import { TextField, Paper, Grid, Card, Typography } from '@mui/material'
 // import { makeStyles } from '@mui/styles'
 import React from 'react'
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { RegisterUser } from '../services/Auth'
 
 // const useStyles = makeStyles({
@@ -64,7 +64,7 @@ const RegisterForm = () => {
     // <div>
     <Paper style={paperStyle}>
       <Grid>
-        <Typography>
+        <Typography component={'span'}>
           {/* <Card> */}
           <form className="form" onSubmit={handleSubmit}>
             <Grid
@@ -164,17 +164,17 @@ const RegisterForm = () => {
               />
               <Grid item p={2}>
                 <button
-                // disabled={
-                //   !formValues.username ||
-                //   (!formValues.password &&
-                //     formValues.confirmPassword === formValues.password)
-                // }
+                  disabled={
+                    !formValues.username ||
+                    (!formValues.password &&
+                      formValues.confirmPassword === formValues.password)
+                  }
                 >
                   Register
                 </button>
               </Grid>
               <p>
-                Already a member? <a href="/login">Log in</a>
+                Already a member? <Link to="/login">Log in</Link>
               </p>
             </Grid>
           </form>

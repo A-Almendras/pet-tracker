@@ -1,6 +1,6 @@
 import { TextField, Paper, Grid, Card, Typography } from '@mui/material'
 import React, { useContext, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import AuthUserContext from '../context/AuthUserContext'
 // import jwt_decode from 'jwt-decode'
 import { LogInUser } from '../services/Auth'
@@ -24,13 +24,13 @@ const LoginForm = () => {
     // Resets the form to blank once API req completes successfully
     setUser(payload)
     setFormValues({ username: '', password: '' })
-    console.log(payload)
+    // console.log(payload)
     toggleAuthenticated(true)
 
     // navigate('/user')
     navigate('/pets')
   }
-  console.log(user)
+  // console.log(user)
 
   return (
     <Grid>
@@ -70,12 +70,14 @@ const LoginForm = () => {
             margin="normal"
             required
           />
-          {/* disabled={!formValues.username || !formValues.password} */}
+
           <Grid item p={1}>
-            <button>Log in</button>
+            <button disabled={!formValues.username || !formValues.password}>
+              Log in
+            </button>
           </Grid>
           <p>
-            Don't have an account? <a href="/register">Register</a>
+            Don't have an account? <Link to="/register">Register</Link>
           </p>
         </Grid>
       </form>
