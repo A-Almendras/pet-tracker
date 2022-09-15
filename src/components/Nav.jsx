@@ -14,10 +14,6 @@ const Nav = () => {
     {
       title: 'Pets',
       path: '/pets'
-    },
-    {
-      title: 'Logout',
-      path: '/'
     }
   ]
   return (
@@ -33,7 +29,9 @@ const Nav = () => {
           </NavLink>
         </li>
       ))}
-      <p onClick={logout}>{items[2].title}</p>
+      <li onClick={logout}>Logout</li>
+      {/* <p onClick={logout}>{items[2].title}</p> */}
+      {/* <NavLink to={(onClick = { logout })}>{items[2].title}</NavLink> */}
     </div>
   )
 }
