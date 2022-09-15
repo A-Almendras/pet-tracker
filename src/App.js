@@ -14,7 +14,7 @@ import PetDash from './pages/PetDash'
 
 function App() {
   let { user } = useContext(AuthUserContext)
-  console.log({ user })
+  // console.log({ user })
   return (
     <div className="App">
       <header className="App-header"></header>
