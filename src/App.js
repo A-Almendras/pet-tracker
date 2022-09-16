@@ -29,7 +29,7 @@ function App() {
         <Route path="/login" element={<LoginForm />} />
         <Route path="/user/:username" element={<UserPage />} />
         <Route path="/pets" element={<PetsPage />} />
-        <Route path="/pets/create" element={<PetForm />} />
+        <Route path="/pets/petform" element={<PetForm />} />
         <Route path="/dash/:petId" element={<PetDash />} />
       </Routes>
     </div>
