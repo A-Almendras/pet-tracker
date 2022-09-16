@@ -99,12 +99,12 @@ const PetForm = () => {
                     size="small"
                     required
                   >
-                    <MenuItem value={'mammal'}>Mammal</MenuItem>
-                    <MenuItem value={'bird'}>Bird</MenuItem>
-                    <MenuItem value={'fish'}>Fish</MenuItem>
-                    <MenuItem value={'reptile'}>Reptile</MenuItem>
-                    <MenuItem value={'amphibian'}>Amphibian</MenuItem>
-                    <MenuItem value={'other'}>Other</MenuItem>
+                    <MenuItem value={'Mammal'}>Mammal</MenuItem>
+                    <MenuItem value={'Bird'}>Bird</MenuItem>
+                    <MenuItem value={'Fish'}>Fish</MenuItem>
+                    <MenuItem value={'Reptile'}>Reptile</MenuItem>
+                    <MenuItem value={'Amphibian'}>Amphibian</MenuItem>
+                    <MenuItem value={'Other'}>Other</MenuItem>
                   </Select>
                 </Grid>
                 <TextField
