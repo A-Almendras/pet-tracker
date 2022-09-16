@@ -9,40 +9,61 @@ import {
   MenuItem
 } from '@mui/material'
 import React from 'react'
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import AuthUserContext from '../context/AuthUserContext'
 import { Link, useNavigate } from 'react-router-dom'
-import { CreatePet } from '../services/UserReq'
+import { CreatePet, UpdatePetInfo } from '../services/UserReq'
 
 const PetForm = () => {
   let navigate = useNavigate()
 
-  let { user, paperStyle } = useContext(AuthUserContext)
+  let { user, paperStyle, editPetForm, selectedPet, setEditPetForm } =
+    useContext(AuthUserContext)
 
-  const [formValues, setFormValues] = useState({
+  const initialValues = {
     name: '',
     animal_group: '',
     animal_kind: '',
     dob: '',
     gotcha_date: '',
     age: ''
-  })
+  }
+
+  const [formValues, setFormValues] = useState({ initialValues })
+  // const [updateFormValues, setUpdateFormValues] = useState({initialValues})
+  // const [createFormValues, setCreateFormValues] = useState({initialValues})
+
+  // Allowed to populate pets information on the form for editing
+  useEffect(() => {
+    if (editPetForm) {
+      setFormValues(selectedPet)
+    }
+  }, [editPetForm])
 
   const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value })
   }
-
+  // console.log(selectedPet)
   const handleSubmit = async (e) => {
     e.preventDefault()
-    await CreatePet({
-      name: formValues.name,
-      animal_group: formValues.animal_group,
-      animal_kind: formValues.animal_kind,
-      dob: formValues.dob,
-      gotcha_date: formValues.gotcha_date,
-      age: formValues.age,
-      user_id: user.id
-    })
+    if (editPetForm) {
+      // console.log(selectedPet)
+      // console.log(editPetForm)
+      await UpdatePetInfo(selectedPet.id, formValues)
+      navigate(`/dash/${selectedPet.id}`)
+    } else {
+      await CreatePet({
+        name: formValues.name,
+        animal_group: formValues.animal_group,
+        animal_kind: formValues.animal_kind,
+        dob: formValues.dob,
+        gotcha_date: formValues.gotcha_date,
+        age: formValues.age,
+        user_id: user.id
+      })
+      // Redirects user to login
+      navigate('/pets')
+    }
     // Resets the form to blank once API req completes successfully
     setFormValues({
       name: '',
@@ -52,8 +73,7 @@ const PetForm = () => {
       gotcha_date: '',
       age: ''
     })
-    // Redirects user to login
-    navigate('/pets')
+    setEditPetForm(false)
   }
 
   return (
@@ -85,7 +105,7 @@ const PetForm = () => {
                     size="small"
                     // className={fieldStyle.field}
                     // fullWidth
-                    required
+                    // required
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -93,7 +113,9 @@ const PetForm = () => {
                   <Select
                     onChange={handleChange}
                     name="animal_group"
-                    value={formValues.animal_group}
+                    value={
+                      formValues.animal_group ? formValues.animal_group : ''
+                    }
                     id="animal_group"
                     label="Animal Group"
                     size="small"
@@ -152,21 +174,41 @@ const PetForm = () => {
                   variant="outlined"
                   size="small"
                 />
-                <Grid item p={2}>
-                  <button
-                    disabled={
-                      !formValues.name ||
-                      !formValues.animal_group ||
-                      !formValues.animal_kind ||
-                      !formValues.gotcha_date
-                    }
-                  >
-                    Add Pet
-                  </button>
-                </Grid>
-                <p>
-                  <Link to="/pets">Cancel</Link>
-                </p>
+                {editPetForm ? (
+                  <Grid item p={2}>
+                    <button
+                      disabled={
+                        !formValues.name ||
+                        !formValues.animal_group ||
+                        !formValues.animal_kind ||
+                        !formValues.gotcha_date
+                      }
+                    >
+                      Update Profile
+                    </button>
+
+                    <p>
+                      <Link to={`/dash/${selectedPet.id}`}>Cancel</Link>
+                    </p>
+                  </Grid>
+                ) : (
+                  <Grid item p={2}>
+                    <button
+                      disabled={
+                        !formValues.name ||
+                        !formValues.animal_group ||
+                        !formValues.animal_kind ||
+                        !formValues.gotcha_date
+                      }
+                    >
+                      Add Pet
+                    </button>
+
+                    <p>
+                      <Link to="/pets">Cancel</Link>
+                    </p>
+                  </Grid>
+                )}
               </Grid>
             </form>
             {/* </Card> */}
