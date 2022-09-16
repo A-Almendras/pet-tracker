@@ -40,6 +40,17 @@ export const CreatePet = async (petInfo) => {
 }
 
 //
+export const DeletePetProfile = async (petId) => {
+  try {
+    const res = await Client.delete(`pets/${petId}`)
+    console.log(res.data)
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}
+
+//
 // export const GetPetInfo = async (petId) => {
 //   try {
 //     const res = await Client.get(`pets/${petId}`)
@@ -51,20 +62,9 @@ export const CreatePet = async (petInfo) => {
 // }
 
 //
-// export const UpdatePetInfo = async (petId) => {
+// export const UpdatePetInfo = async (petId, petInfo) => {
 //   try {
-//     const res = await Client.put(`pets/${petId}`)
-//     console.log(res.data)
-//     return res.data
-//   } catch (error) {
-//     throw error
-//   }
-// }
-
-// //
-// export const DeletePet = async (petId) => {
-//   try {
-//     const res = await Client.delete(`pets/${petId}`)
+//     const res = await Client.put(`pets/${petId}`, petInfo)
 //     console.log(res.data)
 //     return res.data
 //   } catch (error) {
