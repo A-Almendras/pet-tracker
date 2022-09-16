@@ -24,14 +24,6 @@ export const GetPets = async () => {
 //
 export const CreatePet = async (petInfo) => {
   try {
-    // const formData = new FormData()
-    // formData.append('name', petInfo.name)
-    // formData.append('animal_group', petInfo.animal_group)
-    // formData.append('animal_kind', petInfo.animal_kind)
-    // formData.append('dob', petInfo.dob)
-    // formData.append('gotcha_date', petInfo.gotcha_date)
-    // formData.append('age', petInfo.age)
-    // formData.append('user_id', petInfo.user_id)
     const res = await Client.post('pets/', {
       name: petInfo.name,
       animal_group: petInfo.animal_group,
