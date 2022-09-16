@@ -1,10 +1,12 @@
 import React from 'react'
-import { useContext, useEffect } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import AuthUserContext from '../context/AuthUserContext'
 import { GetUserInfo, GetPets } from '../services/UserReq'
-import { useState } from 'react'
+import PetForm from '../components/PetForm'
+import { useNavigate } from 'react-router-dom'
 
 const PetsPage = () => {
+  let navigate = useNavigate()
   let { user, setUser, authenticated, pets, renderUserPets } =
     useContext(AuthUserContext)
   console.log({ user })
@@ -24,8 +26,13 @@ const PetsPage = () => {
   //     setPets(null)
   //   }
   // }
+  const handlePetForm = () => {
+    navigate(`/pets/create`)
+  }
 
-  const petDash = () => {}
+  const petDash = (petId) => {
+    navigate(`/dash/${petId}`)
+  }
 
   useEffect(() => {
     handleUserInfo(user.user_id)
@@ -42,11 +49,11 @@ const PetsPage = () => {
       {/* {pets.name} */}
       {/* <a href={user.pets}>Pets</a> */}
       {pets?.map((pet, index) => (
-        <button key={index} onClick={petDash}>
+        <button key={index} onClick={() => petDash(pet.id)}>
           {pet.name}
         </button>
       ))}
-      <button onClick={petDash}>+</button>
+      <button onClick={() => handlePetForm()}>+</button>
     </div>
   )
 }
