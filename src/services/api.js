@@ -1,9 +1,9 @@
 import Axios from 'axios'
 
 // If backend is deployed utilize:
-// export const BASE_URL = ''
+export const BASE_URL = process.env.REACT_APP_DB_URL
 // Else use:
-export const BASE_URL = 'http://localhost:8000/api'
+// export const BASE_URL = 'http://localhost:8000/api'
 
 const Client = Axios.create({ baseURL: BASE_URL })
 
