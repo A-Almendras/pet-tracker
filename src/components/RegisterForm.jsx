@@ -1,9 +1,10 @@
 import { TextField, Paper, Grid, Card, Typography } from '@mui/material'
 // import { makeStyles } from '@mui/styles'
 import React from 'react'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { RegisterUser } from '../services/Auth'
+import AuthUserContext from '../context/AuthUserContext'
 
 // const useStyles = makeStyles({
 //   field: {
@@ -13,13 +14,9 @@ import { RegisterUser } from '../services/Auth'
 // })
 
 const RegisterForm = () => {
-  const paperStyle = {
-    margin: '10vh auto',
-    // height: '50vh',
-    width: '20rem'
-  }
-
   // const fieldStyle = useStyles()
+
+  let { paperStyle } = useContext(AuthUserContext)
 
   let navigate = useNavigate()
 
@@ -37,7 +34,7 @@ const RegisterForm = () => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value })
   }
 
-  // Submits the user registration form
+  // Submits the user registration form (do not set user state since not logged in yet)
   const handleSubmit = async (e) => {
     e.preventDefault()
     await RegisterUser({

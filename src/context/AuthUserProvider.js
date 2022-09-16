@@ -30,6 +30,12 @@ const AuthUserProvider = ({ children }) => {
     navigate('/login')
   }
 
+  const paperStyle = {
+    margin: '10vh auto',
+    // height: '50vh',
+    width: '20rem'
+  }
+
   let contextData = {
     user: user,
     authenticated: authenticated,
@@ -38,7 +44,8 @@ const AuthUserProvider = ({ children }) => {
     toggleAuthenticated: toggleAuthenticated,
     setAuthTokens: setAuthTokens,
     renderUserPets: renderUserPets,
-    logout: logout
+    logout: logout,
+    paperStyle: paperStyle
   }
 
   return (
