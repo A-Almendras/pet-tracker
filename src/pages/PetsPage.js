@@ -7,10 +7,10 @@ import { useNavigate } from 'react-router-dom'
 
 const PetsPage = () => {
   let navigate = useNavigate()
-  let { user, setUser, authenticated, pets, renderUserPets } =
+  let { user, setUser, pets, renderUserPets, setSelectedPet } =
     useContext(AuthUserContext)
   console.log({ user })
-  console.log({ authenticated })
+  // console.log({ authenticated })
 
   const handleUserInfo = async (userId) => {
     const data = await GetUserInfo(userId)
@@ -30,8 +30,14 @@ const PetsPage = () => {
     navigate(`/pets/create`)
   }
 
-  const petDash = (petId) => {
+  const petDash = (petId, petIndex) => {
     navigate(`/dash/${petId}`)
+    let petObj = pets[petIndex]
+    console.log(petObj)
+    setSelectedPet(petObj)
+    // ALTERNATIVE
+    // const data = await GetPetInfo(petId)
+    // setSelectedPet(data)
   }
 
   useEffect(() => {
@@ -49,7 +55,7 @@ const PetsPage = () => {
       {/* {pets.name} */}
       {/* <a href={user.pets}>Pets</a> */}
       {pets?.map((pet, index) => (
-        <button key={index} onClick={() => petDash(pet.id)}>
+        <button key={index} onClick={() => petDash(pet.id, index)}>
           {pet.name}
         </button>
       ))}

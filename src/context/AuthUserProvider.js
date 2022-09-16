@@ -11,6 +11,7 @@ const AuthUserProvider = ({ children }) => {
   const [authenticated, toggleAuthenticated] = useState(false) // To toggle the UI
   const [authTokens, setAuthTokens] = useState(null) // To get the authentication tokens
   const [pets, setPets] = useState([]) // Store info about users pet
+  const [selectedPet, setSelectedPet] = useState(null)
   let navigate = useNavigate()
 
   const renderUserPets = async () => {
@@ -40,10 +41,12 @@ const AuthUserProvider = ({ children }) => {
     user: user,
     authenticated: authenticated,
     pets: pets,
+    selectedPet: selectedPet,
     setUser: setUser,
     toggleAuthenticated: toggleAuthenticated,
     setAuthTokens: setAuthTokens,
     renderUserPets: renderUserPets,
+    setSelectedPet: setSelectedPet,
     logout: logout,
     paperStyle: paperStyle
   }
