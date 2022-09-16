@@ -15,8 +15,7 @@ const AuthUserProvider = ({ children }) => {
   const [editPetForm, setEditPetForm] = useState(false)
 
   let navigate = useNavigate()
-  console.log(editPetForm)
-  console.log(authenticated)
+
   const renderUserPets = async () => {
     const data = await GetPets()
     console.log(data)

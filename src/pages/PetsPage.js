@@ -9,8 +9,6 @@ const PetsPage = () => {
   let navigate = useNavigate()
   let { user, setUser, pets, renderUserPets, setSelectedPet, setEditPetForm } =
     useContext(AuthUserContext)
-  console.log({ user })
-  // console.log({ authenticated })
 
   const handleUserInfo = async (userId) => {
     const data = await GetUserInfo(userId)
@@ -47,15 +45,9 @@ const PetsPage = () => {
     renderUserPets()
   }, [user])
 
-  // console.log(user)
-  console.log({ pets })
-
   return (
     <div>
       <h2>Choose a pet:</h2>
-      {/* {user.pets} */}
-      {/* {pets.name} */}
-      {/* <a href={user.pets}>Pets</a> */}
       {pets?.map((pet, index) => (
         <button key={index} onClick={() => petDash(pet.id, index)}>
           {pet.name}

@@ -15,15 +15,11 @@ import PetForm from './components/PetForm'
 
 function App() {
   let { user } = useContext(AuthUserContext)
-  // console.log({ user })
   return (
     <div className="App">
       <header className="App-header"></header>
       {user && <Nav />}
       <Routes>
-        {/* <Route path="/" element={<PrivateRoute />}>
-          <Route path="/pets" element={<PetsPage />} />
-        </Route> */}
         <Route path="/" element={<LandingPage />} />
         <Route path="/register" element={<RegisterForm />} />
         <Route path="/login" element={<LoginForm />} />

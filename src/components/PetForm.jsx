@@ -30,8 +30,6 @@ const PetForm = () => {
   }
 
   const [formValues, setFormValues] = useState({ initialValues })
-  // const [updateFormValues, setUpdateFormValues] = useState({initialValues})
-  // const [createFormValues, setCreateFormValues] = useState({initialValues})
 
   // Allowed to populate pets information on the form for editing
   useEffect(() => {
@@ -43,12 +41,10 @@ const PetForm = () => {
   const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value })
   }
-  // console.log(selectedPet)
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (editPetForm) {
-      // console.log(selectedPet)
-      // console.log(editPetForm)
       await UpdatePetInfo(selectedPet.id, formValues)
       navigate(`/dash/${selectedPet.id}`)
     } else {
@@ -88,8 +84,6 @@ const PetForm = () => {
                 direction="column"
                 justifyContent="center"
                 alignItems="center"
-                // spacing={5}
-                // p={2}
               >
                 <h3>Pet Form</h3>
                 <Grid>
@@ -99,13 +93,10 @@ const PetForm = () => {
                     name="name"
                     placeholder="Name"
                     value={formValues.name}
-                    id="outlined-basic"
                     label="Name"
                     variant="outlined"
                     size="small"
-                    // className={fieldStyle.field}
-                    // fullWidth
-                    // required
+                    required
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -134,7 +125,7 @@ const PetForm = () => {
                   name="animal_kind"
                   placeholder="Animal kind"
                   value={formValues.animal_kind}
-                  id="outlined-basic"
+                  id="animal_kind"
                   label="Animal Kind"
                   variant="outlined"
                   size="small"

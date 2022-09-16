@@ -6,11 +6,8 @@ import { DeletePetProfile } from '../services/UserReq'
 
 const PetDash = () => {
   let navigate = useNavigate()
-  let { user, pets, selectedPet, setEditPetForm } = useContext(AuthUserContext)
-
-  // useEffect(() => {
-  //   selectedPet
-  // }, [])
+  let { user, pets, selectedPet, setEditPetForm, renderUserPets } =
+    useContext(AuthUserContext)
 
   const handleProfileUpdate = () => {
     setEditPetForm(true)
@@ -27,8 +24,11 @@ const PetDash = () => {
     <div>
       <h2>{selectedPet.name}</h2>
       <p>
-        {selectedPet.animal_kind} | {selectedPet.animal_group}
+        {selectedPet.animal_group} | {selectedPet.animal_kind}
       </p>
+      <p>Gotcha Day: {selectedPet.gotcha_date}</p>
+      <p>{selectedPet.dob ? selectedPet.dob : ''}</p>
+      <p>{selectedPet.age ? selectedPet.age : ''}</p>
       <button onClick={() => handleProfileUpdate()}>Profile</button>
       <button onClick={() => handleDeleteProfile(selectedPet.id)}>
         Delete Profile

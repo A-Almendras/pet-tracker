@@ -1,21 +1,11 @@
 import { TextField, Paper, Grid, Card, Typography } from '@mui/material'
-// import { makeStyles } from '@mui/styles'
 import React from 'react'
 import { useState, useContext } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { RegisterUser } from '../services/Auth'
 import AuthUserContext from '../context/AuthUserContext'
 
-// const useStyles = makeStyles({
-//   field: {
-//     marginTop: 10,
-//     marginBottom: 10
-//   }
-// })
-
 const RegisterForm = () => {
-  // const fieldStyle = useStyles()
-
   let { paperStyle } = useContext(AuthUserContext)
 
   let navigate = useNavigate()
@@ -69,8 +59,6 @@ const RegisterForm = () => {
               direction="column"
               justifyContent="center"
               alignItems="center"
-              // spacing={5}
-              // p={2}
             >
               <h3>Join Today!</h3>
               <Grid>
@@ -80,12 +68,9 @@ const RegisterForm = () => {
                   name="first_name"
                   placeholder="First Name"
                   value={formValues.first_name}
-                  id="outlined-basic"
                   label="First Name"
                   variant="outlined"
                   size="small"
-                  // className={fieldStyle.field}
-                  // fullWidth
                   required
                 />
               </Grid>
@@ -96,11 +81,9 @@ const RegisterForm = () => {
                   name="last_name"
                   placeholder="Last Name"
                   value={formValues.last_name}
-                  id="outlined-basic"
                   label="Last Name"
                   variant="outlined"
                   size="small"
-                  // fullWidth
                   required
                 />
               </Grid>
@@ -110,11 +93,9 @@ const RegisterForm = () => {
                 name="email"
                 placeholder="Email"
                 value={formValues.email}
-                id="outlined-basic"
                 label="Email"
                 variant="outlined"
                 size="small"
-                // fullWidth
                 required
               />
               <TextField
@@ -123,12 +104,9 @@ const RegisterForm = () => {
                 name="username"
                 placeholder="Username"
                 value={formValues.username}
-                id="outlined-basic"
                 label="Username"
                 variant="outlined"
                 size="small"
-                // margin="small"
-                // fullWidth
                 required
               />
               <TextField
@@ -137,12 +115,9 @@ const RegisterForm = () => {
                 name="password"
                 placeholder="Password"
                 value={formValues.password}
-                id="outlined-basic"
                 label="Password"
                 variant="outlined"
                 size="small"
-                // margin="normal"
-                // fullWidth
                 required
               />
               <TextField
@@ -151,12 +126,9 @@ const RegisterForm = () => {
                 name="confirmPassword"
                 placeholder="Confirm Password"
                 value={formValues.confirmPassword}
-                id="outlined-basic"
                 label="Confirm Password"
                 variant="outlined"
                 size="small"
-                // margin="normal"
-                // fullWidth
                 required
               />
               <Grid item p={2}>

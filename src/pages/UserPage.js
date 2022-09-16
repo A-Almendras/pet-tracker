@@ -5,12 +5,9 @@ import { GetUserInfo } from '../services/UserReq'
 const UserPage = () => {
   let { user } = useContext(AuthUserContext)
 
-  useEffect(() => {
-    const userInfo = GetUserInfo(user.user_id)
-    console.log(userInfo)
-  }, [])
+  useEffect(() => {}, [])
 
-  return <div>UserPage</div>
+  return <div>{user.last_name}</div>
 }
 
 export default UserPage

@@ -2,7 +2,6 @@ import { TextField, Paper, Grid, Card, Typography } from '@mui/material'
 import React, { useContext, useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import AuthUserContext from '../context/AuthUserContext'
-// import jwt_decode from 'jwt-decode'
 import { LogInUser } from '../services/Auth'
 
 const LoginForm = () => {
@@ -24,13 +23,10 @@ const LoginForm = () => {
     // Resets the form to blank once API req completes successfully
     setUser(payload)
     setFormValues({ username: '', password: '' })
-    // console.log(payload)
     toggleAuthenticated(true)
 
-    // navigate('/user')
     navigate('/pets')
   }
-  // console.log(user)
 
   return (
     <Grid>
@@ -47,13 +43,10 @@ const LoginForm = () => {
               onChange={handleChange}
               type="text"
               name="username"
-              // placeholder="Username"
               value={formValues.username}
-              id="outlined-basic"
               label="Username"
               variant="outlined"
               size="small"
-              // fullWidth
               required
             />
           </Grid>
@@ -61,9 +54,7 @@ const LoginForm = () => {
             onChange={handleChange}
             type="password"
             name="password"
-            // placeholder="Password"
             value={formValues.password}
-            id="outlined-basic"
             label="Password"
             variant="outlined"
             size="small"
