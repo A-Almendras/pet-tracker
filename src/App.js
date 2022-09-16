@@ -10,6 +10,7 @@ import LandingPage from './pages/LandingPage'
 import PetsPage from './pages/PetsPage'
 import UserPage from './pages/UserPage'
 import PetDash from './pages/PetDash'
+import PetForm from './components/PetForm'
 // import PrivateRoute from './services/PrivateRoute'
 
 function App() {
@@ -28,7 +29,8 @@ function App() {
         <Route path="/login" element={<LoginForm />} />
         <Route path="/user/:username" element={<UserPage />} />
         <Route path="/pets" element={<PetsPage />} />
-        <Route path="/pets/:petId" element={<PetDash />} />
+        <Route path="/pets/create" element={<PetForm />} />
+        <Route path="/dash/:petId" element={<PetDash />} />
       </Routes>
     </div>
   )
