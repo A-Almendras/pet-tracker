@@ -1,14 +1,22 @@
 import React from 'react'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import AuthUserContext from '../context/AuthUserContext'
 import { DeletePetProfile } from '../services/UserReq'
 
 const PetDash = () => {
   let navigate = useNavigate()
-  let { user, pets, selectedPet } = useContext(AuthUserContext)
+  let { user, pets, selectedPet, setEditPetForm } = useContext(AuthUserContext)
 
-  const handleProfileUpdate = () => {}
+  // useEffect(() => {
+  //   selectedPet
+  // }, [])
+
+  const handleProfileUpdate = () => {
+    setEditPetForm(true)
+    navigate(`/pets/petform`)
+    console.log(selectedPet)
+  }
 
   const handleDeleteProfile = async (petId) => {
     await DeletePetProfile(petId)

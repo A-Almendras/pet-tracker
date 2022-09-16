@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 
 const PetsPage = () => {
   let navigate = useNavigate()
-  let { user, setUser, pets, renderUserPets, setSelectedPet } =
+  let { user, setUser, pets, renderUserPets, setSelectedPet, setEditPetForm } =
     useContext(AuthUserContext)
   console.log({ user })
   // console.log({ authenticated })
@@ -27,7 +27,8 @@ const PetsPage = () => {
   //   }
   // }
   const handlePetForm = () => {
-    navigate(`/pets/create`)
+    setEditPetForm(false)
+    navigate(`/pets/petform`)
   }
 
   const petDash = (petId, petIndex) => {
@@ -35,6 +36,7 @@ const PetsPage = () => {
     let petObj = pets[petIndex]
     console.log(petObj)
     setSelectedPet(petObj)
+
     // ALTERNATIVE
     // const data = await GetPetInfo(petId)
     // setSelectedPet(data)

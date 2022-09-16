@@ -12,8 +12,11 @@ const AuthUserProvider = ({ children }) => {
   const [authTokens, setAuthTokens] = useState(null) // To get the authentication tokens
   const [pets, setPets] = useState([]) // Store info about users pet
   const [selectedPet, setSelectedPet] = useState(null)
-  let navigate = useNavigate()
+  const [editPetForm, setEditPetForm] = useState(false)
 
+  let navigate = useNavigate()
+  console.log(editPetForm)
+  console.log(authenticated)
   const renderUserPets = async () => {
     const data = await GetPets()
     console.log(data)
@@ -42,11 +45,13 @@ const AuthUserProvider = ({ children }) => {
     authenticated: authenticated,
     pets: pets,
     selectedPet: selectedPet,
+    editPetForm: editPetForm,
     setUser: setUser,
     toggleAuthenticated: toggleAuthenticated,
     setAuthTokens: setAuthTokens,
     renderUserPets: renderUserPets,
     setSelectedPet: setSelectedPet,
+    setEditPetForm: setEditPetForm,
     logout: logout,
     paperStyle: paperStyle
   }
