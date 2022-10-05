@@ -1,6 +1,6 @@
 # PetCare2.0 - _Pet More, Worry Less_
 
-## Date: 09/01-14/2022
+<!-- ## Date: 09/01-14/2022 -->
 
 ### By: Anaflavia Almendras
 
@@ -53,7 +53,7 @@ Life gets crazy and keeping track of everything and everyone in our lives that n
 
 ### **_Screenshots_**
 
-##### Intended layout of the application (WIP, not yet implemented)
+##### Intended layout of the application (WIP)
 
 ![LandingPage](images/landing.png)
 
